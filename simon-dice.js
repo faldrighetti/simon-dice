@@ -9,18 +9,22 @@ const botonAmarillo = document.querySelector('#amarillo');
 
 botonAzul.onclick = function(){
     secuenciaUsuario.push('azul');
+    console.log(secuenciaUsuario)
 }
 
 botonVerde.onclick = function(){
     secuenciaUsuario.push('verde');
+    console.log(secuenciaUsuario)
 }
 
 botonRojo.onclick = function(){
     secuenciaUsuario.push('rojo');
+    console.log(secuenciaUsuario)
 }
 
 botonAmarillo.onclick = function(){
     secuenciaUsuario.push('amarillo');
+    console.log(secuenciaUsuario)
 }
 
 function colorRandom(colores){
@@ -32,9 +36,8 @@ function colorRandom(colores){
 function encenderColor(){
     const colores = document.querySelectorAll('.cuadrado');
     let proximoColor = colorRandom(colores);
-    if(proximoColor === 'azul'){
-        setTimeout(botonAzul.className = 'azulEncendido', 1000);
-    }
+        setTimeout(proximoColor.classList.add('cuadradoEncendido'), 1000);
+    secuenciaIA.push(proximoColor);
 }
 
 function compararArrays (array1, array2){
@@ -43,16 +46,22 @@ function compararArrays (array1, array2){
     return string1 === string2;
 }
 
-//1- Hacer los 4 botones
-//2- Cuando le haga clic, añadir el botón a un push
+function manejarClic(){
+    //target
+    if(compararArrays(secuenciaIA, secuenciaUsuario)){
+
+    }
+}
 
 /*
 Llamar funciones sin paréntesis: son funciones de call back, van en los onclick u onsubmit.
 Cuando haga clic en el botón, el navegador va a llamar a la función. No lo voy a hacer yo sino el navegador.
 */
 
-function deshabilitar(){
-    
+function deshabilitar(boton){
+    boton.onclick = function(){
+        return;
+    }
 }
 
 function bloquearUsuario(){
@@ -60,7 +69,7 @@ function bloquearUsuario(){
 }
 
 function mostrarPuntos(){
-
+    return puntos*10;
 }
 
 function continuarPartida(){

@@ -3,52 +3,49 @@
     flex-wrap: wrap;
 }
 
+.cuadrado{
+    width: 400px; 
+    height: 200px; 
+}
+
+.cuadradoEncendido{
+    opacity: 500;
+}
+
+#iniciar{
+    align-items: right;
+}
+
 #rojo{
     background-color: red;
-    width: 500px; 
-    height: 250px; 
 }
 
 #azul{
     background-color: blue;
-    width: 500px; 
-    height: 250px; 
 }
 
 #verde{
     background-color: green;
-    width: 500px; 
-    height: 250px; 
 }
 
 #amarillo{
     background-color: yellow;
-    width: 500px; 
-    height: 250px; 
 }
 
 .rojoEncendido{
     background-color: rgb(250, 69, 69);
-    width: 500px; 
-    height: 250px;
 }
 
 .azulEncendido{
     background-color: rgb(61, 89, 248);
-    width: 500px; 
-    height: 250px; 
 }
 
 .verdeEncendido{
     background-color: rgb(67, 236, 109);
-    width: 500px; 
-    height: 250px; 
 }
 
 .amarilloEncendido{
     background-color: rgb(241, 241, 85);
-    width: 500px; 
-    height: 250px; 
 }
 
 #reiniciar{
