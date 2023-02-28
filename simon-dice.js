@@ -1,6 +1,12 @@
 let secuenciaIA = []
 let secuenciaUsuario = []
-let puntos = 0;
+let ronda = 0;
+
+function reiniciar(){
+    secuenciaIA = []
+    secuenciaUsuario = []
+    ronda = 0;
+}
 
 const botonAzul = document.querySelector('#azul');
 const botonVerde = document.querySelector('#verde');
@@ -27,7 +33,7 @@ botonAmarillo.onclick = function(){
     console.log(secuenciaUsuario)
 }
 
-function colorRandom(colores){
+function obtenerColorRandom(colores){
     let colorResaltado = colores[Math.floor(Math.random() * colores.length)].value;
     secuenciaIA.push(colorResaltado);
     return colorResaltado;
@@ -35,7 +41,7 @@ function colorRandom(colores){
 
 function encenderColor(){
     const colores = document.querySelectorAll('.cuadrado');
-    let proximoColor = colorRandom(colores);
+    let proximoColor = obtenerColorRandom(colores);
         setTimeout(proximoColor.classList.add('cuadradoEncendido'), 1000);
     secuenciaIA.push(proximoColor);
 }
@@ -46,11 +52,43 @@ function compararArrays (array1, array2){
     return string1 === string2;
 }
 
+function manejarRonda(){
+    actualizarEstado('Turno de la maquina')
+    deshabilitarUsuario();
+
+    const nuevoCuadro = obtenerColorRandom()
+    secuenciaIA.push(nuevoCuadro);
+
+    const retrasoJugador = (secuenciaIA.length + 1) * 1000;
+    //Si la IA tiene n cuadros, el usuario va a poder jugar cuando pasen n+1 segundos
+
+    secuenciaIA.forEach(function(cuadro, indice){
+        const retraso = (indice + 1) * 1000;
+        setTimeout(function(){
+            encenderColor(cuadro);
+        }, retraso)
+    })
+
+    setTimeout(function(){
+        actualizarEstado('Turno del jugador')
+        habilitarUsuario();
+    }, retrasoJugador);
+
+    secuenciaUsuario = [];
+    ronda++;
+    //actualizarRonda(ronda);
+}
+
 function manejarClic(){
     //target
     if(compararArrays(secuenciaIA, secuenciaUsuario)){
-
+ 
     }
+}
+
+function actualizarEstado(estado){
+    const $estado = document.querySelector('#estado');
+    $estado.textContent = estado;
 }
 
 /*
@@ -58,14 +96,18 @@ Llamar funciones sin paréntesis: son funciones de call back, van en los onclick
 Cuando haga clic en el botón, el navegador va a llamar a la función. No lo voy a hacer yo sino el navegador.
 */
 
-function deshabilitar(boton){
+function deshabilitarUsuario(boton){
     boton.onclick = function(){
         return;
     }
 }
 
 function bloquearUsuario(){
-    setTimeout(deshabilitar(), 1000)
+    setTimeout(deshabilitarUsuario(/*Acá tiene que haber un parámetro!*/), 1000)
+}
+
+function habilitarUsuario(){
+
 }
 
 function mostrarPuntos(){
@@ -86,7 +128,8 @@ function fallar(){
 }
 
 function mostrarBotonReiniciar(){
-
+    const $botonReiniciar = document.querySelector('#reiniciar');
+    $botonReiniciar.style.display = 'flex'
 }
 
 

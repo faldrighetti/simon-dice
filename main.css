@@ -10,6 +10,7 @@
 
 .cuadradoEncendido{
     opacity: 500;
+    background-color: white;
 }
 
 #iniciar{
@@ -49,6 +50,6 @@
 }
 
 #reiniciar{
-    display: flex;
+    display: none;
     align-items: center;
 }
