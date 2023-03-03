@@ -2,43 +2,18 @@ let secuenciaIA = []
 let secuenciaUsuario = []
 let ronda = 0;
 
-document.querySelector('#estado').onclick = comenzarJuego;
+document.querySelector('#boton-inicio').onclick = iniciarPartida;
+
+function iniciarPartida(){
+    reiniciar();
+    manejarRonda();
+}
 
 function reiniciar(){
     secuenciaIA = []
     secuenciaUsuario = []
     ronda = 0;
 }
-
-function comenzarJuego() {
-    reiniciar();
-    manejarRonda();
-}
-
-const botonAzul = document.querySelector('#azul');
-const botonVerde = document.querySelector('#verde');
-const botonRojo = document.querySelector('#rojo');
-const botonAmarillo = document.querySelector('#amarillo');
-
-/*botonAzul.onclick = function(){
-    secuenciaUsuario.push('azul');
-    console.log(secuenciaUsuario)
-}
-
-botonVerde.onclick = function(){
-    secuenciaUsuario.push('verde');
-    console.log(secuenciaUsuario)
-}
-
-botonRojo.onclick = function(){
-    secuenciaUsuario.push('rojo');
-    console.log(secuenciaUsuario)
-}
-
-botonAmarillo.onclick = function(){
-    secuenciaUsuario.push('amarillo');
-    console.log(secuenciaUsuario)
-}*/
 
 function obtenerColorRandom(colores){
     let colorResaltado = colores[Math.floor(Math.random() * colores.length)];
@@ -49,6 +24,7 @@ function obtenerColorRandom(colores){
 function encenderColor(){
     const colores = document.querySelectorAll('.cuadrado');
     let proximoColor = obtenerColorRandom(colores);
+    proximoColor.classList.add('cuadradoEncendido')
         setTimeout(proximoColor.classList.add('cuadradoEncendido'), 1000);
     secuenciaIA.push(proximoColor);
 }
@@ -88,7 +64,7 @@ function manejarRonda(){
 
 function manejarClic(event){
     const cuadro = event.target;
-    resaltarCuadro(cuadro);
+    encenderColor(cuadro);
     secuenciaUsuario.push(cuadro);
     const cuadroMaquina = secuenciaIA[secuenciaUsuario.length -1];
     if (cuadro.id !== cuadroMaquina.id){
@@ -119,16 +95,11 @@ function resaltarCuadro(cuadro){
     }, 500);
 }
 
-/*
-Llamar funciones sin paréntesis: son funciones de call back, van en los onclick u onsubmit.
-Cuando haga clic en el botón, el navegador va a llamar a la función. No lo voy a hacer yo sino el navegador.
-*/
-
 function deshabilitarUsuario(){
     const $boton = document.querySelectorAll('.cuadrado');
     $boton.forEach(function(cuadro){
         cuadro.onclick = function(){
-            console.log('bloqueado')
+            console.log('bloqueado');
         }
     })
 }
@@ -137,7 +108,7 @@ function habilitarUsuario(){
     const cuadradoHabilitado = document.querySelectorAll('.cuadrado')
     cuadradoHabilitado.forEach(function($cuadro) {
         $cuadro.onclick = manejarClic;
-      });
+    });
 }
 
 function mostrarPuntos(){
@@ -152,16 +123,9 @@ function continuarPartida(){
 }
 
 function perderPartida(){
-
-
-    mostrarBotonReiniciar();
+    deshabilitarUsuario();
+    actualizarEstado('Perdiste, tocá "Iniciar partida" para volver a jugar');
 }
-
-function mostrarBotonReiniciar(){
-    const $botonReiniciar = document.querySelector('#reiniciar');
-    $botonReiniciar.style.display = 'flex'
-}
-
 
 /*
 SI Armar 4 rectángulos de colores
