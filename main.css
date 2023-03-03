@@ -6,6 +6,8 @@
 .cuadrado{
     width: 400px; 
     height: 200px; 
+    opacity: 0.5;
+    transition: opacity 500ms;
 }
 
 .cuadradoEncendido{
