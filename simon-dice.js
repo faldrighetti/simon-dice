@@ -15,18 +15,11 @@ function reiniciar(){
     ronda = 0;
 }
 
-function obtenerColorRandom(colores){
+function obtenerColorRandom(){
+    let colores = document.querySelectorAll('.cuadrado');
     let colorResaltado = colores[Math.floor(Math.random() * colores.length)];
     secuenciaIA.push(colorResaltado);
     return colorResaltado;
-}
-
-function encenderColor(){
-    const colores = document.querySelectorAll('.cuadrado');
-    let proximoColor = obtenerColorRandom(colores);
-    proximoColor.classList.add('cuadradoEncendido')
-        setTimeout(proximoColor.classList.add('cuadradoEncendido'), 1000);
-    secuenciaIA.push(proximoColor);
 }
 
 function compararArrays(array1, array2){
@@ -48,7 +41,7 @@ function manejarRonda(){
     secuenciaIA.forEach(function(cuadro, indice){
         const retraso = (indice + 1) * 1000;
         setTimeout(function(){
-            encenderColor(cuadro);
+            resaltarCuadro(cuadro);
         }, retraso);
     });
 
@@ -64,7 +57,7 @@ function manejarRonda(){
 
 function manejarClic(event){
     const cuadro = event.target;
-    encenderColor(cuadro);
+    resaltarCuadro(cuadro);
     secuenciaUsuario.push(cuadro);
     const cuadroMaquina = secuenciaIA[secuenciaUsuario.length -1];
     if (cuadro.id !== cuadroMaquina.id){

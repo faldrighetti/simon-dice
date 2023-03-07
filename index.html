@@ -12,19 +12,32 @@
 <body>
   <div class="row align-items-start">
     <div class="col-sm-8">
-      <div id="boton-inicio" class="alert alert-info" role="alert">Hacé clic en Iniciar partida para empezar!</div>  
+      <div id="estado" class="alert alert-info" role="alert">Hacé clic en Iniciar partida para empezar!</div>  
     </div>
-    <div class="col-sm-2" id="ronda">Ronda #</div>
+    <div class="col-sm-1" id="">Ronda #</div>
+    <div class="col-sm-1" id="ronda"></div>
     <div class="col-sm-2">
-      <button type="button" class="btn btn-info">Iniciar partida</button>
+      <button id="boton-inicio" type="button" class="btn btn-info">Iniciar partida</button>
     </div>
   </div>
   
-  <main class="container">
-    <button type="button" id="azul" class="cuadrado">1</button>
-    <button type="button" id="verde" class="cuadrado">2</button>
-    <button type="button" id="rojo" class="cuadrado">3</button>
-    <button type="button" id="amarillo" class="cuadrado">4</button>
+  <main class="container" id="tablero">
+    <div class="row">
+      <div class="col-sm">
+        <button type="button" id="azul" class="cuadrado">1</button>
+      </div>
+      <div class="col-sm">
+        <button type="button" id="verde" class="cuadrado">2</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm">
+        <button type="button" id="rojo" class="cuadrado">3</button>
+      </div>
+      <div class="col-sm">
+        <button type="button" id="amarillo" class="cuadrado">4</button>
+      </div>
+    </div>    
   </main>
   
   <script src='simon-dice.js'></script>
