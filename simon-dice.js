@@ -18,7 +18,6 @@ function reiniciar(){
 function obtenerColorRandom(){
     let colores = document.querySelectorAll('.cuadrado');
     let colorResaltado = colores[Math.floor(Math.random() * colores.length)];
-    secuenciaIA.push(colorResaltado);
     return colorResaltado;
 }
 
@@ -29,7 +28,7 @@ function compararArrays(array1, array2){
 }
 
 function manejarRonda(){
-    actualizarEstado('Turno de la maquina');
+    actualizarEstado('Turno de la computadora');
     deshabilitarUsuario();
 
     const nuevoCuadro = obtenerColorRandom();
@@ -59,7 +58,7 @@ function manejarClic(event){
     const cuadro = event.target;
     resaltarCuadro(cuadro);
     secuenciaUsuario.push(cuadro);
-    const cuadroMaquina = secuenciaIA[secuenciaUsuario.length -1];
+    const cuadroMaquina = secuenciaIA[secuenciaUsuario.length - 1];
     if (cuadro.id !== cuadroMaquina.id){
         perderPartida();
         return;
@@ -92,7 +91,6 @@ function deshabilitarUsuario(){
     const $boton = document.querySelectorAll('.cuadrado');
     $boton.forEach(function(cuadro){
         cuadro.onclick = function(){
-            console.log('bloqueado');
         }
     })
 }
