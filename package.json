@@ -1,0 +1,23 @@
+{
+  "name": "simon-dice",
+  "version": "1.0.0",
+  "description": "Ejercicio de Simon Dice para r/argentina programa",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/faldrighetti/simon-dice.git"
+  },
+  "author": "Federico Aldrighetti",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/faldrighetti/simon-dice/issues"
+  },
+  "homepage": "https://github.com/faldrighetti/simon-dice#readme",
+  "dependencies": {
+    "bootstrap": "^5.2.3",
+    "jquery": "^3.6.4"
+  }
+}
